@@ -8,7 +8,6 @@ export default class Inscricoes extends BaseSchema {
             table.increments('idInscricao')
             table.integer('idAluno').notNullable()
             table.integer('idPlano').notNullable()
-            table.date('dataInscricao').notNullable()
             table.integer('idOperacaoPagamento').notNullable()
 
             table.timestamp('created_at', { useTz: true })
