@@ -21,3 +21,5 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', 'HomeController.index')
+Route.post('/login', 'AuthController.login')
+Route.post('/logout', 'AuthController.logout')

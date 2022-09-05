@@ -1,6 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 // import Database from '@ioc:Adonis/Lucid/Database'
-import Aluno from '../../Models/Aluno';
+import Aluno from '../../Models/User';
 
 export default class HomeController {
   async index({response}): Promise<HttpContextContract> {
