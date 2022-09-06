@@ -1,20 +1,32 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
+import User from './User';
+import Aula from './Aula';
+import RespostaDuvida from './RespostaDuvida';
 
 export default class Aluno extends BaseModel {
-  public static table = 'DuvidasAula';
+  public static table = 'duvidas_aula';
 
   @column({ isPrimary: true })
   public idDuvida: number
 
   @column()
-  public idAula: number
+  public aulaId: number
+
+  @belongsTo(() => Aula)
+  public aula: BelongsTo<typeof Aula>
   
   @column()
-  public idAluno: number
+  public alunoId: number
+
+  @belongsTo(() => User)
+  public aluno: BelongsTo<typeof User>
 
   @column()
   public comentario: string
+
+  @hasMany(() => RespostaDuvida)
+  public duvidas: HasMany<typeof RespostaDuvida>
   
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

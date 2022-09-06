@@ -1,14 +1,18 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import User from './User';
 
 export default class Aluno extends BaseModel {
-  public static table = 'Inscricoes';
+  public static table = 'inscricoes';
 
   @column({ isPrimary: true })
   public idInscricao: number
 
   @column()
-  public idAluno: number
+  public alunoId: number
+
+  @belongsTo(() => User)
+  public aluno: BelongsTo<typeof User>
 
   @column()
   public idPlano: number

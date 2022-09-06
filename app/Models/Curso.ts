@@ -1,10 +1,11 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import Aula from './Aula';
 
 export default class Aluno extends BaseModel {
-  public static table = 'Cursos';
+  public static table = 'cursos';
 
-  @column({ columnName: 'idCurso', isPrimary: true })
+  @column({ columnName: 'id_curso', isPrimary: true })
   public id: number
 
   @column()
@@ -12,6 +13,9 @@ export default class Aluno extends BaseModel {
 
   @column()
   public valor: number
+
+  @hasMany(() => Aula)
+  public aulas: HasMany<typeof Aula>
 
   @column()
   public ativo: boolean
