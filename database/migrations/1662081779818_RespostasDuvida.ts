@@ -1,13 +1,13 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class RespostasDuvida extends BaseSchema {
-    protected tableName = 'RespostasDuvida'
+    protected tableName = 'respostas_duvida'
 
     public async up () {
         this.schema.createTable(this.tableName, (table) => {
-            table.increments('idResposta')
-            table.integer('idDuvida').notNullable()
-            table.integer('idAluno').notNullable()
+            table.increments('id_resposta')
+            table.integer('duvida_id').notNullable().unsigned().references('id_duvida').inTable('duvidas_aula')
+            table.integer('aluno_id').notNullable().unsigned().references('id_aluno').inTable('alunos')
             table.text('comentario').notNullable()
 
             table.timestamp('created_at', { useTz: true })

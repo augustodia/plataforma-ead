@@ -1,11 +1,11 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class Alunos extends BaseSchema {
-    protected tableName = 'Alunos'
+    protected tableName = 'alunos'
 
     public async up () {
         this.schema.createTable(this.tableName, (table) => {
-            table.increments('idAluno')
+            table.increments('id_aluno')
             table.string('nome').notNullable()
             table.string('email').notNullable().unique()
             table.string('cpf').notNullable().unique()

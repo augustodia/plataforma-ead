@@ -6,7 +6,7 @@ export default class ApiTokens extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
-      table.integer('user_id').unsigned().references('idAluno').inTable('Alunos').onDelete('CASCADE')
+      table.integer('user_id').unsigned().references('id_aluno').inTable('alunos').onDelete('CASCADE')
       table.string('name').notNullable()
       table.string('type').notNullable()
       table.string('token', 64).notNullable().unique()

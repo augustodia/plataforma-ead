@@ -22,4 +22,9 @@ import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', 'HomeController.index')
 Route.post('/login', 'AuthController.login')
-Route.post('/logout', 'AuthController.logout')
+
+/* ROTAS QUE PRECISAM DE AUTENTICAÇÃO */ 
+Route.group(() => {
+  Route.post('/logout', 'AuthController.logout')
+}).middleware('auth')
+/* ROTAS QUE PRECISAM DE AUTENTICAÇÃO */ 

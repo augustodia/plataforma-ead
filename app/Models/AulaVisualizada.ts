@@ -1,14 +1,18 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import Aula from './Aula';
 
 export default class Aluno extends BaseModel {
-  public static table = 'AulasVisualizadas';
+  public static table = 'aulas_visualizadas';
 
   @column({ isPrimary: true })
   public idVisualizacao: number
 
   @column()
-  public idAula: number
+  public aulaId: number
+
+  @belongsTo(() => Aula)
+  public aula: BelongsTo<typeof Aula>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
