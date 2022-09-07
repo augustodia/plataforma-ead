@@ -2,7 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import Aula from './Aula';
 
-export default class Aluno extends BaseModel {
+export default class Curso extends BaseModel {
   public static table = 'cursos';
 
   @column({ columnName: 'id_curso', isPrimary: true })

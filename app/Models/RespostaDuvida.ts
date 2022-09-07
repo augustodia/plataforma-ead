@@ -3,7 +3,7 @@ import { BaseModel, belongsTo, BelongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import DuvidaAula from './DuvidaAula';
 import User from './User';
 
-export default class Aluno extends BaseModel {
+export default class RespostaDuvida extends BaseModel {
   public static table = 'respostas_duvida';
 
   @column({ isPrimary: true })

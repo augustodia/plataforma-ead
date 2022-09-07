@@ -4,7 +4,7 @@ import User from './User';
 import Aula from './Aula';
 import RespostaDuvida from './RespostaDuvida';
 
-export default class Aluno extends BaseModel {
+export default class DuvidaAula extends BaseModel {
   public static table = 'duvidas_aula';
 
   @column({ isPrimary: true })

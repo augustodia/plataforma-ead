@@ -2,7 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import User from './User';
 
-export default class Aluno extends BaseModel {
+export default class Inscricao extends BaseModel {
   public static table = 'inscricoes';
 
   @column({ isPrimary: true })

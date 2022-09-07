@@ -3,7 +3,7 @@ import { BaseModel, BelongsTo, belongsTo, column, hasMany, HasMany } from '@ioc:
 import Curso from './Curso';
 import DuvidaAula from './DuvidaAula';
 
-export default class Aluno extends BaseModel {
+export default class Aula extends BaseModel {
   public static table = 'aulas';
 
   @column({ isPrimary: true })
