@@ -7,6 +7,7 @@ export default class Cursos extends BaseSchema {
         this.schema.createTable(this.tableName, (table) => {
             table.increments('id_curso')
             table.string('nome').notNullable()
+            table.specificType('descricao', 'text').nullable()
             table.float('valor').notNullable()
             table.boolean('ativo').notNullable()
             table.boolean('publicado').notNullable()
