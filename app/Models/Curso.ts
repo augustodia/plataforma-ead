@@ -12,6 +12,9 @@ export default class Curso extends BaseModel {
   public nome: string
 
   @column()
+  public descricao: string
+
+  @column()
   public valor: number
 
   @hasMany(() => Aula)
