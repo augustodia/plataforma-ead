@@ -2,7 +2,7 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Curso from '../../../Models/Curso';
 import { CreateValidator, UpdateValidator, MsgValidacao } from './CursoValidator'
 
-export default class HomeController {
+export default class CursoController {
   async allCursos({response}){
     return response.send(await Curso.all());
   }

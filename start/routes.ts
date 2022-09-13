@@ -25,9 +25,19 @@ Route.group(() => {
 /* CURSO */
 
 /* AULA */
-Route.get('/aulasByCurso/:idCurso', 'Aula/AulaController.aulasByCurso').middleware('auth')
-Route.get('/aulaById/:id', 'Aula/AulaController.aulaById').middleware('auth')
-Route.post('/aula', 'Aula/AulaController.create').middleware(['auth', 'isSuperUser'])
-Route.put('/aula/:id', 'Aula/AulaController.update').middleware(['auth', 'isSuperUser'])
-Route.delete('/aula/:id', 'Aula/AulaController.delete').middleware(['auth', 'isSuperUser'])
+Route.group(() => {
+  Route.get('/aulasByCurso/:idCurso', 'Aula/AulaController.aulasByCurso')
+  Route.get('/aulaById/:id', 'Aula/AulaController.aulaById')
+  Route.post('/aula', 'Aula/AulaController.create').middleware('isSuperUser')
+  Route.put('/aula/:id', 'Aula/AulaController.update').middleware('isSuperUser')
+  Route.delete('/aula/:id', 'Aula/AulaController.delete').middleware('isSuperUser')
+}).middleware('auth')
 /* AULA */
+
+/* AULA VISUALIZADA */
+Route.group(() => {
+  Route.post('/aulaVisualizadaById/:aulaId', 'AulaVisualizada/AulaVisualizadaController.visualizacaoByIdAula')
+  Route.post('/aulaVisualizada', 'AulaVisualizada/AulaVisualizadaController.create')
+  Route.put('/aulaVisualizada/:aulaId', 'AulaVisualizada/AulaVisualizadaController.update')
+}).middleware(['auth', 'isCurrentUser'])
+/* AULA VISUALIZADA */
