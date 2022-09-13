@@ -4,7 +4,7 @@ import Aluno from '../../../Models/User';
 import CreateValidator from './CreateValidator'
 import UpdateValidator from './UpdateValidator'
 
-export default class HomeController {
+export default class UserController {
   async showAll({response}){
     response.send(await Aluno.all());
   }
