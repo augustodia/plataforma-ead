@@ -41,7 +41,7 @@ export default class HomeController {
     })
     
     aulaEdit.merge(aulaData);
-    aulaEdit.save();
+    await aulaEdit.save();
 
     return response.send(aulaEdit);
   }

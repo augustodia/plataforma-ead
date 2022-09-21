@@ -8,7 +8,7 @@ export default class CursosConcluidos extends BaseSchema {
             table.increments('id_conclusao')
             table.integer('curso_id').notNullable().unsigned().references('id_curso').inTable('cursos')
             table.integer('aluno_id').notNullable().unsigned().references('id_aluno').inTable('alunos')
-
+            table.boolean('concluido').notNullable()
             table.timestamp('created_at', { useTz: true })
             table.timestamp('updated_at', { useTz: true })
         })

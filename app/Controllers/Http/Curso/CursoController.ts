@@ -39,7 +39,7 @@ export default class CursoController {
     })
     
     cursoEdit.merge(cursoData);
-    cursoEdit.save();
+    await cursoEdit.save();
 
     return response.send(cursoEdit);
   }
