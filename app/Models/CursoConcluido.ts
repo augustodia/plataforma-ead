@@ -6,8 +6,8 @@ import User from './User';
 export default class CursoConcluido extends BaseModel {
   public static table = 'cursos_concluidos';
 
-  @column({ isPrimary: true })
-  public idConclusao: number
+  @column({ columnName: 'id_conclusao', isPrimary: true })
+  public id: number
 
   @column()
   public alunoId: number
@@ -20,6 +20,9 @@ export default class CursoConcluido extends BaseModel {
 
   @belongsTo(() => Curso)
   public curso: BelongsTo<typeof Curso>
+
+  @column()
+  public concluido: boolean
   
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

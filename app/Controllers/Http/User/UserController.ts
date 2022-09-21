@@ -63,7 +63,7 @@ export default class UserController {
     delete aluno.password_confirmation
 
     alunoEdit.merge(aluno);
-    alunoEdit.save();
+    await alunoEdit.save();
 
     return response.send(alunoEdit);
   }

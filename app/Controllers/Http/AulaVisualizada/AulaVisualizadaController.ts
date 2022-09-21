@@ -1,17 +1,20 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import AulaVisualizada from '../../../Models/AulaVisualizada';
+import AulaVisualizada from '../../../Models/AulaVisualizada'
 import { CreateValidator, UpdateValidator } from './AulaVisualizadaValidator'
 
 export default class AulaVisualizadaController {
-  async visualizacaoByIdAula({response, request}){
-    let {aulaId} = request.params();
-    let {alunoId} = request.only(['alunoId']);
-    let aulaVisualizada = await AulaVisualizada.query().where('aula_id', aulaId).where('aluno_id', alunoId).first();
+  async visualizacaoByIdAula({ response, request }) {
+    let { aulaId } = request.params()
+    let { alunoId } = request.only(['alunoId'])
+    let aulaVisualizada = await AulaVisualizada.query()
+      .where('aula_id', aulaId)
+      .where('aluno_id', alunoId)
+      .first()
 
-    if(!aulaVisualizada) return response.send({visualizada: false, aulaId, created: false});
+    if (!aulaVisualizada) return response.send({ visualizada: false, aulaId, created: false })
 
-    let {visualizada} = aulaVisualizada;
-    return response.send({visualizada, aulaId,created: true});
+    let { visualizada } = aulaVisualizada
+    return response.send({ visualizada, aulaId, created: true })
   }
 
   async create({request, response}: HttpContextContract) {
@@ -38,7 +41,7 @@ export default class AulaVisualizadaController {
 
     if(aulaVisualizadaEdit){
       aulaVisualizadaEdit.merge(aulaVisualizadaData);
-      aulaVisualizadaEdit.save();
+      await aulaVisualizadaEdit.save();
     } else {
       return response.status(404);
     }

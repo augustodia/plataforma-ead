@@ -5,5 +5,6 @@ export function isSuperUser(user): boolean {
 }
 
 export function isCurrentUser(userLogged, idUserTarget): boolean {
+  console.log(userLogged.id, idUserTarget)
   return userLogged.id == idUserTarget;
 }

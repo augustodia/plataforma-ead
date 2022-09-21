@@ -12,7 +12,7 @@ export default class Certificado extends BaseModel {
   @column()
   public alunoId: number
 
-  @belongsTo(() => User)
+  @belongsTo(() => User, {foreignKey: 'alunoId'})
   public aluno: BelongsTo<typeof User>
 
   @column()
