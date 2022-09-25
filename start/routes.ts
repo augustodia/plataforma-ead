@@ -34,6 +34,16 @@ Route.group(() => {
 }).middleware('auth');
 /* AULA */
 
+/* DÚVIDA AULA */
+Route.group(() => {
+  Route.get('/getAllDuvidas/:idAula', 'DuvidaAula/DuvidaAulaController.getAllDuvidas');
+  Route.get('/:idDuvida', 'DuvidaAula/DuvidaAulaController.getDuvida');
+  Route.post('/', 'DuvidaAula/DuvidaAulaController.create').middleware('isCurrentUser');
+})
+  .prefix('/duvidaAula')
+  .middleware(['auth']);
+/* DÚVIDA AULA */
+
 /* AULA VISUALIZADA */
 Route.group(() => {
   Route.post(
