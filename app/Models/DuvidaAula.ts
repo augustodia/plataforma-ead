@@ -19,14 +19,14 @@ export default class DuvidaAula extends BaseModel {
   @column()
   public alunoId: number
 
-  @belongsTo(() => User)
+  @belongsTo(() => User, { foreignKey: 'alunoId' })
   public aluno: BelongsTo<typeof User>
 
   @column()
   public comentario: string
 
   @hasMany(() => RespostaDuvida)
-  public duvidas: HasMany<typeof RespostaDuvida>
+  public respostas: HasMany<typeof RespostaDuvida>
   
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
