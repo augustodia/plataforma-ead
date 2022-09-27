@@ -1,5 +1,20 @@
 import Route from '@ioc:Adonis/Core/Route';
 
+/* TODO: {
+  [X] AUTENTICAÇÃO
+  [X] ALUNO/USER
+  [X] CURSO
+  [X] AULA
+  [X] DÚVIDA AULA
+  [] RESPOSTAS DÚVIDA
+  [X] AULA VISUALIZADA
+  [X] AVALIACAO CURSO
+  [X] CERTIFICADO
+  [X] CURSO CONCLUÍDO
+  [] INSCRICAO
+  [] MATRÍCULA
+}*/
+
 /* AUTENTICAÇÃO */
 Route.post('/login', 'AuthController.login');
 Route.post('/logout', 'AuthController.logout').middleware('auth');
