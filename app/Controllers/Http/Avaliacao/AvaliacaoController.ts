@@ -1,5 +1,5 @@
-import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { CreateValidator } from './AvaliacaoValidator'
+import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
+import { CreateValidator } from './AvaliacaoValidator';
 import Avaliacao from '../../../Models/Avaliacao';
 import Curso from '../../../Models/Curso';
 import Certificado from '../../../Models/Certificado';

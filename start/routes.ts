@@ -6,13 +6,13 @@ import Route from '@ioc:Adonis/Core/Route';
   [X] CURSO
   [X] AULA
   [X] DÚVIDA AULA
-  [] RESPOSTAS DÚVIDA
+  [X] RESPOSTAS DÚVIDA
   [X] AULA VISUALIZADA
   [X] AVALIACAO CURSO
   [X] CERTIFICADO
   [X] CURSO CONCLUÍDO
-  [] INSCRICAO
-  [] MATRÍCULA
+  [X] MATRÍCULA
+  [] INSCRICAO // Para depois, ver qual método de pagamento irei usar
 }*/
 
 /* AUTENTICAÇÃO */
@@ -59,6 +59,18 @@ Route.group(() => {
   .middleware(['auth']);
 /* DÚVIDA AULA */
 
+/* RESPOSTA DÚVIDA AULA */
+Route.group(() => {
+  Route.get(
+    '/getAllRespostas/:duvidaId',
+    'RespostaDuvida/RespostaDuvidaController.getAllRespostas'
+  );
+  Route.post('/', 'RespostaDuvida/RespostaDuvidaController.create').middleware('isCurrentUser');
+})
+  .prefix('/respostaDuvida')
+  .middleware(['auth']);
+/* RESPOSTA DÚVIDA AULA */
+
 /* AULA VISUALIZADA */
 Route.group(() => {
   Route.post(
@@ -92,6 +104,17 @@ Route.group(() => {
   .prefix('/certificado')
   .middleware(['auth', 'isCurrentUser']);
 /* CERTIFICADO */
+
+/* MATRÍCULA CURSO */
+Route.group(() => {
+  Route.get('/all/:cursoId', 'MatriculaCurso/MatriculaCursoController.getAllMatriculas').middleware(
+    'isSuperUser'
+  );
+  Route.post('/', 'MatriculaCurso/MatriculaCursoController.create');
+})
+  .prefix('/matricula')
+  .middleware(['auth', 'isCurrentUser']);
+/* MATRÍCULA CURSO */
 
 /* CURSO CONCLUÍDO */
 Route.group(() => {

@@ -1,4 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
+import { CreateValidator } from './DuvidaAulaValidator';
 import DuvidaAula from 'App/Models/DuvidaAula';
 
 export default class DuvidaAulasController {
@@ -18,10 +19,15 @@ export default class DuvidaAulasController {
     }
 
     await duvida.load('aluno');
+    await duvida.load('respostas');
     return response.send(duvida);
   }
   public async create({ request, response }: HttpContextContract) {
     let { aulaId, comentario, alunoId } = request.only(['aulaId', 'comentario', 'alunoId']);
+
+    await request.validate({
+      schema: CreateValidator,
+    });
 
     let duvida = await DuvidaAula.create({ aulaId, comentario, alunoId });
 
